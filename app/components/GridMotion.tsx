@@ -83,7 +83,7 @@ const GridMotion: FC<GridMotionProps> = ({
                 const content = combinedItems[rowIndex * 7 + itemIndex];
                 return ( 
                   <div key={itemIndex} className="relative">
-                    <div className="relative w-full h-full overflow-hidden rounded-[10px] bg-[#2F2F2F] flex items-center justify-center text-white text-[1.5rem]">
+                    <div className="relative w-full h-full overflow-hidden rounded-[10px] bg-[#1F1F1F] flex items-center justify-center text-white text-[1.5rem]">
                       {typeof content === "string" &&
                       content.startsWith("http") ? (
                         <div
