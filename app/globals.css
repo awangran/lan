@@ -3,6 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-inter: "Inter", sans-serif;
+  --font-figtree: "Figtree", sans-serif;
+
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-figtree {
+  font-family: var(--font-figtree);
 }
 
 @theme inline {
@@ -35,19 +46,23 @@ body {
 .background-layer {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  width: 50%;
   height: 100vh;
   z-index: 0;
   opacity: 1;
-  background-size: 100% 25vh;
   background-position: bottom;
   background-repeat: no-repeat;
   background-color: #fff; 
 }
 
+
 .content-layer {
   position: relative;
   z-index: 1;
   width: 100%;
+}
+
+.content-layer2 {
+  z-index: 1;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Figtree } from "next/font/google";
 import "./globals.css";
+import Provider from "./Provider";
 
 const inter = Inter({ subsets: ['latin'] })
 const figtree = Figtree({ subsets: ['latin'] })
@@ -18,10 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.style.fontFamily} ${figtree.style.fontFamily} antialiased`}
-      >
+      <body className={inter.className}>
+        <Provider>
         {children}
+        </Provider>
       </body>
     </html>
   );
