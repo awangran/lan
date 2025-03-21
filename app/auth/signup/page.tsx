@@ -1,16 +1,44 @@
 "use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import GridMotion from '../../components/GridMotion'
 import Blackbox from '../../components/Blackbox'
 import { FaFacebook,FaPinterest,FaInstagram,FaGoogle } from "react-icons/fa";
+import {doc, setDoc, getFirestore } from "firebase/firestore";
+import app from '../../share/firebaseConfig'
 
 function page() {
 
     const { data: session } = useSession()
+    console.log(session)
+    const db = getFirestore(app);
 
+    useEffect(() => {
+        if (session?.user) {
+          saveUserInfo();
+        }
+      }, [session]);
+      
     
+
+      const saveUserInfo = async () => {
+        if (!session?.user) return; 
+        
+        try {
+          const userRef = doc(db, "users", session.user.email);
+          await setDoc(userRef, {
+            name: session.user.name,
+            email: session.user.email,
+            image: session.user.image,
+          }, { merge: true });
+      
+          console.log("User info saved!");
+        } catch (error) {
+          console.error("Error saving user info:", error);
+        }
+    }
+
     const handleGoogleSignIn = async () => {
         const result = await signIn("google", { redirect: false });
     
