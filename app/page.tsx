@@ -21,7 +21,7 @@ export default function Home() {
     <div className="content-layer flex flex-col items-center justify-center min-h-screen">
       <h1 className="tracking-widest font-semibold text-8xl">Lan</h1>
       
-      <Link href='/auth'>
+      <Link href='/auth/signup'>
       <button className="bg-[#191919] mt-5 rounded-full py-2 px-10 text-lg text-white hover:bg-[#f1f1f1] hover:border-[#c5c5c5]] hover:border-2 transition duration-300
           hover:text-black shadow-lg">Ingresar
       </button>
