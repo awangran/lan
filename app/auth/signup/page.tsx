@@ -10,16 +10,16 @@ function page() {
 
     const { data: session } = useSession()
 
+    
     const handleGoogleSignIn = async () => {
         const result = await signIn("google", { redirect: false });
-        console.log("Google Sign-In Response:", result);
-
+    
         if (result?.error) {
-          console.error("Sign-in error:", result.error);
+        console.error("Sign-in error:", result.error);
         } else {
-          console.log("Signed in successfully");
+        console.log("Signed in successfully");
         }
-      };
+    };
 
 
     const items = [
