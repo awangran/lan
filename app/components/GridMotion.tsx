@@ -11,7 +11,7 @@ const GridMotion: FC<GridMotionProps> = ({
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const mouseXRef = useRef<number>(window.innerWidth / 2);
+  const mouseXRef = useRef<number>(0);
 
   // Ensure the grid has 28 items (4 rows x 7 columns) by default
   const totalItems = 28;
@@ -21,6 +21,12 @@ const GridMotion: FC<GridMotionProps> = ({
   );
   const combinedItems =
     items.length > 0 ? items.slice(0, totalItems) : defaultItems;
+useEffect(() => {
+    // Runs only on the client-side
+    if (typeof window !== "undefined") {
+        mouseXRef.current = window.innerWidth / 2;
+    }
+    }, []);
 
   useEffect(() => {
     gsap.ticker.lagSmoothing(0);
